@@ -24,14 +24,14 @@
           </div>
           
           <div id="actions" class="mt-5">
-            <VoltButton class="me-2">
+            <TailButton class="me-2">
               <Icon name="fa-solid:plus" />
               Follow
-            </VoltButton>
-            <VoltButton>
+            </TailButton>
+            <TailButton>
               <Icon name="fa-solid:plus" />
               Add to a list
-            </VoltButton>
+            </TailButton>
           </div>
         </div>
       </div>

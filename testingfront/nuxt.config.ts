@@ -5,14 +5,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
-  googleFonts: {
-    families: {
-      'Roboto': {
-        wght: '100..700'
-      }
-    }
-  },
-
   css: [
     '~/assets/css/main.css'
   ],
@@ -23,17 +15,7 @@ export default defineNuxtConfig({
     ]
   },
 
-  image: {
-    provider: 'none'
-  },
-
-  modules: [
-    '@nuxt/icon',
-    '@nuxtjs/google-fonts',
-    '@nuxt/image',
-    'shadcn-nuxt',
-    '@vueuse/nuxt'
-  ],
+  modules: ['shadcn-nuxt'],
 
   shadcn: {
     /**

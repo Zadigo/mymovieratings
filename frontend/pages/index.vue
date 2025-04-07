@@ -1,12 +1,13 @@
 <template>
-  <section id="home" class="mt-5">
-    <VoltCard>
-      <template #content>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Adipisci quos reiciendis dolores quod quia provident sed amet. Illum natus possimus 
-        esse, earum facilis laboriosam porro eos maiores blanditiis officiis rem.
-      </template>
-    </VoltCard>
+  <section id="home" class=" px-10 mt-5">
+    <TailCard class="shadow-md border-none">
+      <TailCardContent>
+        Lorem ipsum dolor sit amet consectetur 
+        adipisicing elit. Eos quae et corrupti! Natus facilis 
+        ad numquam quo necessitatibus praesentium labore, incidunt, 
+        quibusdam omnis, consequuntur corporis dolores. Provident fuga vel illo!
+      </TailCardContent>
+    </TailCard>
   </section>
 </template>
 
