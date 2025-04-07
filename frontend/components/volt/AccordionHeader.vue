@@ -4,7 +4,7 @@
       <ChevronDownIcon v-if="active" />
       <ChevronUpIcon v-else />
     </template>
-    <slot></slot>
+    <slot />
   </AccordionHeader>
 </template>
 

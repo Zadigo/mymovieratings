@@ -6,7 +6,7 @@
             mergeProps: ptViewMerge
         }"
     >
-        <slot></slot>
+        <slot />
     </TabPanels>
 </template>
 

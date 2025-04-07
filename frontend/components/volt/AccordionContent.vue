@@ -1,6 +1,6 @@
 <template>
   <AccordionContent unstyled :pt="theme" :ptOptions="{ mergeProps: ptViewMerge }">
-    <slot></slot>
+    <slot />
   </AccordionContent>
 </template>
 
