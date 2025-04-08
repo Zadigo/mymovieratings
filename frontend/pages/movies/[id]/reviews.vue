@@ -5,17 +5,51 @@
         <!-- Filters -->
         <div class="flex justify-between gap-2 pb-5">
           <div id="actions-left">
-            <TailButton variant="secondary">
-              <Icon name="fa-solid:eye" />
-              Show
-            </TailButton>
+            <TailDropdownMenu>
+              <TailDropdownMenuTrigger as-child>
+                <TailButton variant="secondary">
+                  <Icon name="fa-solid:eye" />
+                  Show
+                </TailButton>
+              </TailDropdownMenuTrigger>
+
+              <TailDropdownMenuContent>
+                <TailDropdownMenuItem v-for="i in 10" :key="i">
+                  {{ i }} star
+                </TailDropdownMenuItem>
+              </TailDropdownMenuContent>
+            </TailDropdownMenu>
           </div>
           
           <div id="actions-right" class="flex justify-between gap-2">
-            <TailButton variant="secondary">
-              <Icon name="fa-solid:sort" />
-              Sort
-            </TailButton>
+            <TailDropdownMenu>
+              <TailDropdownMenuTrigger as-child>
+                <TailButton variant="secondary">
+                  <Icon name="fa-solid:sort" />
+                  Sort
+                </TailButton>
+              </TailDropdownMenuTrigger>
+
+              <TailDropdownMenuContent>
+                <TailDropdownMenuItem>
+                  <Icon name="fa-solid:sort-alpha-up" /> Title A-Z
+                </TailDropdownMenuItem>
+                
+                <TailDropdownMenuItem>
+                  <Icon name="fa-solid:sort-alpha-down" /> Title Z-A
+                </TailDropdownMenuItem>
+
+                <TailDropdownMenuSeparator />
+
+                <TailDropdownMenuItem>
+                  <Icon name="fa-solid:sort-numeric-up" /> Score 1-10
+                </TailDropdownMenuItem>
+
+                <TailDropdownMenuItem>
+                  <Icon name="fa-solid:sort-numeric-down" /> Score 10-1
+                </TailDropdownMenuItem>
+              </TailDropdownMenuContent>
+            </TailDropdownMenu>
 
             <TailButton variant="secondary">
               <Icon name="fa-solid:filter" />
@@ -23,6 +57,35 @@
             </TailButton>
           </div>
         </div>
+
+        <TailCard class="shadow-none mb-5">
+          <TailCardContent>
+            <div class="flex justify-content-between gap-2">
+              <TailInput placeholder="Field" />
+              <TailInput placeholder="Conditions" />
+              <TailInput placeholder="Value" />
+              <TailButton variant="secondary"><Icon name="fa-solid:plus" /></TailButton>
+
+              <TailDropdownMenu>
+                <TailDropdownMenuTrigger as-child>
+                  <TailButton variant="secondary">
+                    And
+                  </TailButton>
+                </TailDropdownMenuTrigger>
+
+                <TailDropdownMenuContent>
+                  <TailDropdownMenuItem>
+                    And
+                  </TailDropdownMenuItem>
+
+                  <TailDropdownMenuItem>
+                    Or
+                  </TailDropdownMenuItem>
+                </TailDropdownMenuContent>
+              </TailDropdownMenu>  
+            </div>
+          </TailCardContent>
+        </TailCard>
 
         <!-- Reviews -->
         <TailCard v-for="i in 30" :key="i" class="shadow-md border-none mb-3">
@@ -34,7 +97,7 @@
               </div>
               
               <h3 class="text-2xl font-semibold">
-                I am a big fan of this and that
+                I am a big fan of this and that n°{{ i }}
               </h3>
             </div>
           
@@ -49,7 +112,7 @@
                 </div>
               </div>
 
-              <TailButton variant="outline">
+              <TailButton :variant="isFollowed ? 'default' : 'outline'" @click="isFollowed=!isFollowed">
                 <Icon name="fa-solid:plus" />
                 Follow
               </TailButton>
@@ -64,12 +127,14 @@
           
 
             <div id="helpful" class="flex gap-2 mt-5">
-              <TailButton variant="secondary">
-                <Icon name="fa-regular:thumbs-up" /> 100
+              <TailButton variant="secondary" @click="isLiked=!isLiked">
+                <Icon v-if="isLiked" name="fa-solid:thumbs-up" />
+                <Icon v-else name="fa-regular:thumbs-up" /> 100
               </TailButton>
 
-              <TailButton variant="secondary">
-                <Icon name="fa-regular:thumbs-down" /> 30
+              <TailButton variant="secondary" @click="isDisliked=!isDisliked">
+                <Icon v-if="isDisliked" name="fa-solid:thumbs-down" />
+                <Icon v-else name="fa-regular:thumbs-down" /> 30
               </TailButton>
             </div>
           </TailCardContent>
@@ -127,4 +192,8 @@
 definePageMeta({
   layout: 'movies'
 })
+
+const isLiked = ref<boolean>(false)
+const isDisliked = ref<boolean>(false)
+const isFollowed = ref<boolean>(false)
 </script>

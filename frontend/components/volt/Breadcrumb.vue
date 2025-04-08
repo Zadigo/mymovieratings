@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import Breadcrumb, { type BreadcrumbPassThroughOptions, type BreadcrumbProps } from 'primevue/breadcrumb';
 import { ref } from 'vue';
-import { ptViewMerge } from '../../src/volt/utils';
+import { ptViewMerge } from './utils';
 
 interface Props extends /* @vue-ignore */ BreadcrumbProps {}
 defineProps<Props>();

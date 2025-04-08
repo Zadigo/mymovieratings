@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import Tab, { type TabPassThroughOptions, type TabProps } from 'primevue/tab';
 import { ref } from 'vue';
-import { ptViewMerge } from '../../src/volt/utils';
+import { ptViewMerge } from './utils';
 
 interface Props extends /* @vue-ignore */ TabProps {}
 const props = defineProps<Props>();

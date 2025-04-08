@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.1.3",
     "@vueuse/core": "^13.0.0",
     "@vueuse/integrations": "^13.0.0",
+    "@vueuse/math": "^13.1.0",
     "class-variance-authority": "^0.7.1",
     "dayjs": "^1.11.13",
     "lucide-vue-next": "^0.487.0",

@@ -78,7 +78,7 @@
               
               <VoltRating v-model="rating" :stars="10" />
 
-              <TailButton size="sm">
+              <TailButton size="sm" @click="showAdvancedRating=true">
                 <Icon name="fa-solid:award" />
                 Advanced Rating
               </TailButton>
@@ -158,10 +158,31 @@
         </TailCard>
       </div>
     </div>
+
+    <!-- Modals -->
+    <TailDialog v-model:open="showAdvancedRating">
+      <TailDialogContent>
+        {{ scoringTotal }}
+        <TailDialogHeader aria-describedby="Some description">
+          <TailDialogTitle>
+            Advanced rating
+          </TailDialogTitle>
+        </TailDialogHeader>
+
+        <div class="flex flex-col gap-3">
+          <div v-for="item in advancedRating" :key="item.field" class="inline-flex gap-2 items-center place-items-center">
+            {{ item.text }}
+            <BaseRating v-model="requestData[item.field]" :max-stars="10" />
+          </div>
+        </div>
+      </TailDialogContent>
+    </TailDialog>
   </section>
 </template>
 
 <script setup lang="ts">
+import { useRound, useSum } from '@vueuse/math'
+import { advancedRating, type RequestData } from '~/data'
 definePageMeta({
   layout: 'movies'
 })
@@ -171,4 +192,18 @@ useHead({
 })
 
 const rating = ref(0)
+const showAdvancedRating = ref<boolean>(false)
+
+const requestData = reactive(
+  Object.fromEntries(
+    advancedRating.map(({ field }) => [ field, 0 ])
+  )
+)
+
+const scoringTotal = computed(() => {
+  const values = Object.values(requestData)
+  const count = values.length
+  const summedValues = useSum(values).value
+  return useRound((summedValues / count)).value
+})
 </script>

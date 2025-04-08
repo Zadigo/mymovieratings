@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import TabPanels, { type TabPanelsPassThroughOptions, type TabPanelsProps } from 'primevue/tabpanels';
 import { ref } from 'vue';
-import { ptViewMerge } from '../../src/volt/utils';
+import { ptViewMerge } from './utils';
 
 interface Props extends /* @vue-ignore */ TabPanelsProps {}
 defineProps<Props>();
