@@ -60,30 +60,50 @@
 
         <TailCard class="shadow-none mb-5">
           <TailCardContent>
-            <div class="flex justify-content-between gap-2">
-              <TailInput placeholder="Field" />
-              <TailInput placeholder="Conditions" />
-              <TailInput placeholder="Value" />
-              <TailButton variant="secondary"><Icon name="fa-solid:plus" /></TailButton>
+            <form @submit.prevent>
+              <div v-for="(itemCondition, i) in conditions" :key="i" class="flex justify-content-between gap-2 mb-1">
+                <TailSelect>
+                  <TailSelectTrigger>
+                    <TailSelectValue class="w-[150px]" placeholder="Select a field" />
+                  </TailSelectTrigger>
+                  
+                  <TailSelectContent>
+                    <TailSelectItem v-for="item in fieldNames" :key="item" :value="item" @click="itemCondition.field=item">
+                      {{ item }}
+                    </TailSelectItem>
+                  </TailSelectContent>
+                </TailSelect>
 
-              <TailDropdownMenu>
-                <TailDropdownMenuTrigger as-child>
-                  <TailButton variant="secondary">
-                    And
-                  </TailButton>
-                </TailDropdownMenuTrigger>
+                <TailInput placeholder="Conditions" />
+                <TailInput v-model="itemCondition.value" placeholder="Value" />
 
-                <TailDropdownMenuContent>
-                  <TailDropdownMenuItem>
-                    And
-                  </TailDropdownMenuItem>
+                <TailButton variant="secondary" @click="addCondition">
+                  <Icon name="fa-solid:minus" />
+                </TailButton>
 
-                  <TailDropdownMenuItem>
-                    Or
-                  </TailDropdownMenuItem>
-                </TailDropdownMenuContent>
-              </TailDropdownMenu>  
-            </div>
+                <TailButton variant="secondary" @click="addCondition">
+                  <Icon name="fa-solid:plus" />
+                </TailButton>
+
+                <TailDropdownMenu>
+                  <TailDropdownMenuTrigger as-child>
+                    <TailButton variant="secondary" class="w-[50px]">
+                      {{ itemCondition.condition }}
+                    </TailButton>
+                  </TailDropdownMenuTrigger>
+
+                  <TailDropdownMenuContent>
+                    <TailDropdownMenuItem @click="itemCondition.condition='And'">
+                      And
+                    </TailDropdownMenuItem>
+
+                    <TailDropdownMenuItem @click="itemCondition.condition='Or'">
+                      Or
+                    </TailDropdownMenuItem>
+                  </TailDropdownMenuContent>
+                </TailDropdownMenu>  
+              </div>
+            </form>
           </TailCardContent>
         </TailCard>
 
@@ -91,10 +111,23 @@
         <TailCard v-for="i in 30" :key="i" class="shadow-md border-none mb-3">
           <TailCardContent>
             <div class="flex gap-5 items-center place-items-center mb-2">
-              <div class="inline-flex gap-2 items-center">
-                <Icon name="fa-solid:star" class="bg-yellow-300" />
-                <span>5 / 10</span>
-              </div>
+              <TailPopover>
+                <TailPopoverTrigger>
+                  <div class="inline-flex gap-2 items-center cursor-pointer">
+                    <Icon name="fa-solid:star" class="bg-yellow-300" />
+                    <span>5 / 10</span>
+                  </div>
+                </TailPopoverTrigger>
+
+                <TailPopoverContent class="border-none shadow-xl">
+                  <div class="p-5">
+                    <div v-for="item in advancedRating" :key="item.text" class="flex justify-between">
+                      <span>{{ item.text }}</span>
+                      <span><Icon v-for="i in 3" name="fa-solid:star" /></span>
+                    </div>
+                  </div>
+                </TailPopoverContent>
+              </TailPopover>
               
               <h3 class="text-2xl font-semibold">
                 I am a big fan of this and that n°{{ i }}
@@ -189,6 +222,8 @@
 </template>
 
 <script setup lang="ts">
+import { advancedRating } from '~/data'
+
 definePageMeta({
   layout: 'movies'
 })
@@ -196,4 +231,26 @@ definePageMeta({
 const isLiked = ref<boolean>(false)
 const isDisliked = ref<boolean>(false)
 const isFollowed = ref<boolean>(false)
+
+const fieldNames = [
+  'Title',
+  'Rating',
+  'Reviews'
+]
+
+const conditions = ref([
+  {
+    field: 'Title',
+    condition: 'And',
+    value: ''
+  }
+])
+
+function addCondition() {
+  conditions.value.push({
+    field: '',
+    condition: 'And',
+    value: ''
+  })
+}
 </script>
