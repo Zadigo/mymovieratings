@@ -59,6 +59,7 @@
         <TailCard id="quick-information" class="shadow-md border-none my-2">
           <TailCardContent>
             <h1 class="font-bold text-3xl uppercase">My Movie Name <span class="font-semibold">(2024)</span></h1>
+            <TailSkeleton class="h-5 rounded-full w-2/6" />
 
             <div class="inline-flex gap-4 my-2">
               <div id="rated">R</div>
@@ -77,16 +78,16 @@
               
               <VoltRating v-model="rating" :stars="10" />
 
-              <TailButton rounded raised>
+              <TailButton size="sm">
                 <Icon name="fa-solid:award" />
                 Advanced Rating
               </TailButton>
             </div>
 
-            <TailButton to="/movies/1/reviews" variant="outline">
+            <NuxtLink to="/movies/1/reviews">
               <Icon name="fa-solid:comments" />
               Reviews (206)
-            </TailButton>
+            </NuxtLink>
 
             <!-- <TailButton class="mt-4">
               <Icon name="fa-solid:comments" />
