@@ -1,10 +1,13 @@
 <template>
-  <section id="site">
-    <header ref="headerEl" id="header" role="heading"class="p-20 text-white relative h-auto">
-      <div class="overlay" />
-      
-      <div class="flex place-items-center gap-10 relative z-10">
-        <NuxtImg src="mia.jpg" height="" class="rounded-md shadow-md" />
+  <section id="actors" clas="mt-17">
+    <!-- Header -->
+    <header id="header" ref="headerEl" role="heading" class="relative p-20 text-primary-50 h-auto bg-center bg-no-repeat bg-cover" :style="{ backgroundImage: `url(/mia.jpg)` }">
+      <!-- Overlay -->
+      <div class="absolute top-0 left-0 w-full h-full backdrop-blur-lg bg-black/50 z-10" />
+
+      <!-- Infos -->
+      <div class="flex place-items-center gap-10 relative z-20">
+        <nuxt-img src="mia.jpg" class="rounded-xl grayscale-25" />
         
         <div id="infos">
           <h1 class="text-5xl font-bold uppercase">
@@ -14,7 +17,7 @@
           <div class="inline-flex gap-3 place-items-center items-center mt-3">
             <p class="text-2xl">Actress . Producer . Writer</p>
             <div id="stars">
-              <Icon v-for="i in 5" :key="i" name="fa-solid:star" />
+              <icon v-for="i in 5" :key="i" name="fa-solid:star" />
             </div>
           </div>
           
@@ -24,14 +27,15 @@
           </div>
           
           <div id="actions" class="mt-5">
-            <TailButton class="me-2">
-              <Icon name="fa-solid:plus" />
+            <nuxt-button class="me-2" variant="subtle" color="info">
+              <icon name="fa-solid:plus" />
               Follow
-            </TailButton>
-            <TailButton>
-              <Icon name="fa-solid:plus" />
+            </nuxt-button>
+
+            <nuxt-button variant="subtle" color="info">
+              <icon name="fa-solid:plus" />
               Add to a list
-            </TailButton>
+            </nuxt-button>
           </div>
         </div>
       </div>
@@ -51,7 +55,7 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<!-- <style lang="scss" scoped>
 #header {
   background-image: url('/mia.jpg');
   background-position: center;
@@ -77,4 +81,4 @@ onMounted(() => {
   position: relative;
   z-index: 2;
 }
-</style>
+</style> -->

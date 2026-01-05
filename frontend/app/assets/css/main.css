@@ -3,8 +3,9 @@
 @import "tw-animate-css";
 
 @theme {
-    --font-sans: 'Public Sans', system-ui, sans-serif;
+    --font-sans: 'Bitter', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
+    --font-title: 'Archivo', sans-serif;
 }
 
 @theme static {
@@ -33,4 +34,41 @@
     --color-brand-800: #991b1b;
     --color-brand-900: #7f1d1d;
     --color-brand-950: #450a0a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title);
+}
+
+code, pre {
+    font-family: var(--font-mono);
+}
+
+
+/* Page transition animations */
+
+.page-enter-active {
+    /* @apply animate__animated animate__fadeIn; */
+    /* transition: all 0.5s ease-in-out; */
+    transition: all 0.8s cubic-bezier(.77,.11,.49,.82);
+}
+
+.page-leave-active {
+    /* @apply animate__animated animate__fadeOut; */
+    /* transition: all 0.2s ease-in-out; */
+    transition: all 0.2s cubic-bezier(.77,.11,.49,.82);
+}
+
+.page-enter-from,
+.page-leave-to {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateX(-100px);
+}
+
+.page-enter-to,
+.page-leave-from {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(0px);
 }

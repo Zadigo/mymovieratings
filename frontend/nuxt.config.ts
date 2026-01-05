@@ -14,8 +14,12 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/ui',
     '@vueuse/motion',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@nuxt/fonts'
   ],
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
   vite: {
     plugins: [tailwind()]
   },
@@ -24,5 +28,15 @@ export default defineNuxtConfig({
   },
   css: [
     '~/assets/css/main.css'
-  ]
+  ],
+  fonts: {
+    families: [
+      {
+        name: 'Archivo'
+      },
+      {
+        name: 'Bitter'
+      }
+    ]
+  }
 })

@@ -116,7 +116,7 @@
               <template #header>
                 <div class="flex items-center gap-2 py-4">
                   <nuxt-avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" shape="circle" />
-                  <span class="font-bold">Amy Elsner</span>
+                  <nuxt-link to="/actors/1" class="font-bold underline">Amy Elsner</nuxt-link>
                 </div>
               </template>
 

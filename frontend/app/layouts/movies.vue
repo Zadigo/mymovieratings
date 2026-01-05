@@ -1,41 +1,49 @@
 <template>
-  <section id="site">
+  <section id="movies" class="mt-17">
     <!-- Header -->
     <client-only>
-      <use-mouse v-slot="{ x, y }">
-        <header id="header" ref="headerEl" class="p-10 md:p-20 h-[60vh] text-primary-50 relative bg-no-repeat bg-cover bg-center overflow-hidden transition-all ease-in-out" :style="{ backgroundImage: 'url(/img1.jpg)' }">
-          <div class="absolute top-0 left-0 w-full h-full bg-linear-to-b from-black/50 via-black/30 to-black/10" />
+      <template #default>
+        <use-mouse v-slot="{ x, y }">
+          <header id="header" ref="headerEl" class="p-10 md:p-20 h-[60vh] text-primary-50 relative bg-no-repeat bg-cover bg-center overflow-hidden transition-all ease-in-out" :style="{ backgroundImage: 'url(/img1.jpg)' }">
+            <div class="absolute top-0 left-0 w-full h-full bg-linear-to-b from-black/50 via-black/30 to-black/10" />
+            
+            <div id="infos" class="relative z-10">
+              <h1 class="mt-10 md:mt-0 text-7xl font-bold uppercase z-20">
+                My Movie name {{ x }} {{ y }}
+              </h1>
           
-          <div id="infos" class="relative z-10">
-            <h1 class="mt-10 md:mt-0 text-7xl font-bold uppercase z-20">
-              My Movie name {{ x }} {{ y }}
-            </h1>
-        
-            <div class="inline-flex gap-3 place-items-center items-center mt-3">
-              <p class="text-2xl">(2025)</p>
-    
-              <div id="stars">
-                <icon v-for="i in 5" :key="i" name="fa-solid:star" />
+              <div class="inline-flex gap-3 place-items-center items-center mt-3">
+                <p class="text-2xl">(2025)</p>
+      
+                <div id="stars">
+                  <icon v-for="i in 5" :key="i" name="fa-solid:star" />
+                </div>
+              </div>
+              
+              <div id="actions" class="mt-5 flex gap-2">
+                <nuxt-button variant="solid">
+                  <icon name="lucide:check-circle" />
+                  Watched
+                </nuxt-button>
+      
+                <nuxt-button variant="solid">
+                  <icon name="lucide:share" />
+                  Share
+                </nuxt-button>
               </div>
             </div>
-            
-            <div id="actions" class="mt-5 flex gap-2">
-              <nuxt-button variant="solid">
-                <icon name="lucide:check-circle" />
-                Watched
-              </nuxt-button>
-    
-              <nuxt-button variant="solid">
-                <icon name="lucide:share" />
-                Share
-              </nuxt-button>
-            </div>
-          </div>
-        </header>
-      </use-mouse>
+          </header>
+        </use-mouse>
+      </template>
+
+      <template #fallback>
+        <header class="h-[60vh] bg-primary-900" />
+      </template>
     </client-only>
 
-    <slot />
+    <div class="mt-17">
+      <slot />
+    </div>
   </section>
 </template>
 

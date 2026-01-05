@@ -1,61 +1,54 @@
 <template>
-  <section id="search" class="px-10">
+  <section id="search" class="px-20 mt-17">
     <div class="grid grid-cols-12 gap-2">
-      <aside class="col-span-2 col-start-3">
-        <TailCard class="shadow-sm border-none">
-          <TailCardContent>
-            <form @submit.prevent>
-              <TailInput v-model="movieData.title" placeholder="Dune: Part Two" />
+      <aside class="col-span-6">
+        <nuxt-card class="shadow-sm border-none">
+          <form @submit.prevent>
+            <nuxt-input v-model="movieData.title" placeholder="Dune: Part Two" />
+            <nuxt-input v-model="movieData.country" placeholder="France" />
+            <nuxt-input v-model="movieData.keywords" placeholder="Keywords" />
 
-              <TailInput v-model="movieData.country" placeholder="France" />
+            <h2>Movie Types</h2>
+            <div class="flex justify-start flex-wrap gap-1">
+              <nuxt-button v-for="item in movieTypesList" :key="item" variant="subtle" size="sm" @click="setMovieType(item)">
+                {{ item }}
+              </nuxt-button>
+            </div>
 
-              <TailInput v-model="movieData.keywords" placeholder="Keywords" />
+            <h2>Release date</h2>
+            <div class="flex gap-1">
+              <nuxt-input v-model="movieData.release_date.min" type="date" />
+              <nuxt-input v-model="movieData.release_date.max" type="date" />
+            </div>
 
-              <h2>Movie Types</h2>
-              <div class="flex justify-start flex-wrap gap-1">
-                <TailButton v-for="item in movieTypesList" :key="item" variant="secondary" size="sm" @click="setMovieType(item)">
-                  {{ item }}
-                </TailButton>
-              </div>
+            <div class="flex items-center space-x-2">
+              <nuxt-switch is="release-date" v-model="movieData.use_year" label="Use year" />
+            </div>
 
-              <h2>Release date</h2>
-              <div class="flex gap-1">
-                <TailInput v-model="movieData.release_date.min" type="date" />
-                <TailInput v-model="movieData.release_date.max" type="date" />
-              </div>
+            <h2>Rating</h2>
+            <div class="flex justify-around gap-1">
+              <nuxt-input v-model="movieData.rating.min" type="number" class="w-full" min="1" max="10" placeholder="1-10" />
+              <nuxt-input v-model="movieData.rating.max" type="number" class="w-full" min="1" max="10" placeholder="1-10" />
+            </div>
 
-              <div class="flex items-center space-x-2">
-                <TailLabel for="release-date" />
-                <TailSwitch v-model="movieData.use_year" is="release-date" label="Use year" />
-              </div>
+            <h2>Genres</h2>
+            <div class="flex justify-start flex-wrap gap-1">
+              <nuxt-button v-for="item in movieGenresList" :key="item" variant="subtle" size="sm" @click="setMovieGenre(item)">
+                {{ item }}
+              </nuxt-button>
+            </div>
 
-              <h2>Rating</h2>
-              <div class="flex gap-1">
-                <TailInput v-model="movieData.rating.min" type="number" min="1" max="10" placeholder="1-10" />
-                <TailInput v-model="movieData.rating.max" type="number" min="1" max="10" placeholder="1-10" />
-              </div>
-
-              <h2>Genres</h2>
-              <div class="flex justify-start flex-wrap gap-1">
-                <TailButton v-for="item in movieGenresList" :key="item" variant="secondary" size="sm" @click="setMovieGenre(item)">
-                  {{ item }}
-                </TailButton>
-              </div>
-
-              <h2>Languages</h2>
-              <TailInput v-model="movieData.languages" placeholder="Languages" />
-            </form>
-          </TailCardContent>
-        </TailCard>
+            <h2>Languages</h2>
+            <nuxt-input v-model="movieData.languages" placeholder="Languages" />
+          </form>
+        </nuxt-card>
       </aside>
 
-      <section id="search-items" class="col-span-6">
-        <TailCard class="shadow-sm border-none">
-          <TailCardContent>
-            Search
-          </TailCardContent>
-        </TailCard>
-      </section>
+      <div id="search-items" class="col-span-6">
+        <nuxt-card class="shadow-sm border-none">
+          Search
+        </nuxt-card>
+      </div>
     </div>
   </section>
 </template>
