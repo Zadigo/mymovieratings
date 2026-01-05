@@ -3,7 +3,7 @@
       <nuxt-img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/refs/heads/main/assets/hero/bg-gradient-2.png" class="absolute inset-0 -z-10 size-full opacity" alt="" />
 
       <a href="https://prebuiltui.com" class="flex items-center gap-2 border border-slate-700 rounded-full p-1 pr-3 text-sm mt-20">
-        <span class="bg-indigo-600 text-xs px-3 py-1 rounded-full">
+        <span class="bg-primary-600 text-xs px-3 py-1 rounded-full">
           NEW
         </span>
 
@@ -23,7 +23,7 @@
         Create, customize and present faster than ever with intelligent design powered by AI.
       </p>
       
-      <div class="bg-white/10 max-w-2xl w-full rounded-xl p-4 mt-10 border border-indigo-600/70">
+      <div class="bg-white/10 max-w-2xl w-full rounded-xl p-4 mt-10 border border-primary-600/70">
         <textarea class="bg-transparent outline-none text-gray-300 resize-none w-full" rows="4" placeholder="Describe your presentation in details" />
         <nuxt-button to="/movies/1" class="ms-auto rounded-full">
           <icon name="lucide:sparkles" />
