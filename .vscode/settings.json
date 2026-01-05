@@ -1,4 +1,5 @@
 {
+    "tailwind-fold.autoFold": false,
     "tailwindCSS.experimental.classRegex": [
         [
             "cva\\(((?:[^()]|\\([^()]*\\))*)\\)",
