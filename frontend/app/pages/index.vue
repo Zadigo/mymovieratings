@@ -1,5 +1,8 @@
 <template>
   <section id="home" class=" px-10 mt-5">
+    <!-- Hero -->
+    <base-hero />
+
     <nuxt-card>
       Lorem ipsum dolor sit amet consectetur 
       adipisicing elit. Eos quae et corrupti! Natus facilis 
